@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Earn your vote</title>
+    <link rel="stylesheet" href="http://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="css/create_task.css" rel="stylesheet">
+    <link rel="icon" type="image/jpg" href="img/favicon.jpg"/>
+</head>
+
+<body>
+
+<nav class="sidebar">
+  <header id="sidebar_header">Admin Panel</header>
+  <a href="#home"><i class="fas fa-id-card"></i> Active Polls</a>
+  <a href="#services"><i class="fas fa-poll"></i> Create a Poll</a>
+  <a href="#clients"><i class="fas fa-tasks"></i> Manage Polls</a>
+  <a href="#contact"><i class="fas fa-award"></i> Poll Results</a>
+  <a href="#services"><i class="fas fa-poll"></i> Create a Task</a>
+  <a href="#clients"><i class="fas fa-tasks"></i> Manage Tasks</a>
+  <a href="#clients"><i class="fas fa-tasks"></i> Assess a Student</a>
+</nav>
+
+<header id="header_nav">
+  <h2> New Task</h2>
+  <a id="logout" href="#logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+</header>
+
+<main class="main">
+  <article>
+    <form method="POST" action="create_poll.php">
+      <div>
+      <label for="task_title">Task Title:</label>
+      <input type="text" name="task_title">
+      </div>
+      <div><label for="task_req">Task Requirements:</label>
+      <textarea type="text" name="task_req"></textarea>
+      </div>
+      <div><label for="task_deadline">Task Deadline:</label>
+      <input type="datetime-local" name="task_deadline">
+      </div>
+      <div><label for="task_maxpoints">Task Maxpoints:</label>
+      <input type="number" name="task_maxpoints">
+      </div>
+      <div><label for="task_weight">Task Weight on Final Grade:</label>
+      <input type="number" name="task_weight">
+      </div>
+      <button id="btn_save_poll" type="submit">Save the Task</button>
+    </form>
+  </article>
+</main>
+</body>
+</html> 

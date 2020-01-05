@@ -1,0 +1,43 @@
+body {font-family: "Lato", sans-serif;}
+
+.sidebar {
+  height: 100%;
+  width: 300px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #7200D0;
+  overflow-x: hidden;
+  padding-top: 16px;
+}
+header{
+  padding: 10px 8px 20px 40px;
+  color: #0ef32f;
+  font-size: 38px;
+  text-transform: uppercase;
+  border-bottom: solid 1px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.sidebar a {
+  padding: 34px 8px 8px 40px;
+  text-decoration: none;
+  font-size: 30px;
+  color: #0ef32f;
+  display: block;
+}
+
+.sidebar a:hover {
+  color: #74a55ed3;
+}
+
+main {
+  margin-left: 300px; /* Same as the width of the sidenav */
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
