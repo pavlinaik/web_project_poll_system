@@ -1,0 +1,34 @@
+#header_nav{
+  margin-left: 292px;
+  padding: 0px 20px;
+  background-color: #333;
+  height: 75px;
+  position: relative;
+}
+
+#header_nav h1 {
+  color: #f2f2f2;
+  font-size: 30px;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 3%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+#logout{
+  color: #f2f2f2;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 20px;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 87%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+#logout:hover{
+  color: #74a55ed3;
+}

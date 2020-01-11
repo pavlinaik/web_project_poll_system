@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Login</title>
+        <title>Registration</title>
         <link href="css/registration.css" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
         crossorigin="anonymous">
@@ -16,23 +16,23 @@
             <form action="src/registration.php" method="POST">
                 <div class="input_container">
                     <i class="fas fa-user"></i>
-                    <input placeholder="Username" type="text" name="username" id="field_username" class='input_field'>
+                    <input placeholder="Username" type="text" name="username" id="field_username" class='input_field' required>
                 </div>
                 <div class="input_container">
                     <i class="fa fa-envelope"></i>
-                    <input placeholder="Email" type="email" name="email" id="field_email" class='input_field'>
+                    <input placeholder="Email" type="email" name="email" id="field_email" class='input_field' required>
                 </div>
                 <div class="input_container">
                     <i class="fas fa-lock"></i>
-                    <input  placeholder="Password" type="password" name="password" id="field_password" class='input_field'>
+                    <input  placeholder="Password" type="password" name="password" id="field_password" class='input_field' required>
                 </div>
                 <div class="input_container">
                     <i class="fas fa-lock"></i>
-                    <input  placeholder="Confirm password" type="password" name="confirm_password" id="field_confirm_password" class='input_field'>
+                    <input  placeholder="Confirm password" type="password" name="confirm_password" id="field_confirm_password" class='input_field' required>
                 </div>
                 <div class="input_container">
                     <i class="fa fa-graduation-cap"></i>
-                    <input  placeholder="Faculty number" type="text" name="fn" id="field_fn" class='input_field'>
+                    <input  placeholder="Faculty number" type="text" name="fn" id="field_fn" class='input_field' required>
                 </div>
                 <div class="input_container">
                     <i class="fa fa-university"></i>

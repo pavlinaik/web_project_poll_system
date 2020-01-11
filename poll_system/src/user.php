@@ -10,9 +10,42 @@
         private $rating;
         private $role;
         private $db;
+        
         public function __construct($username) {
             $this->db = new UserModel();
             $this->username = $username;
+        }
+
+        public function getId(){
+            return $this->id;
+        }
+
+        public function getUsername(){
+            return $this->username;
+        }
+
+        public function getEmail(){
+            return $this->email;
+        }
+
+        public function getPassword(){
+            return $this->password;
+        }
+
+        public function getFn(){
+            return $this->fn;
+        }
+
+        public function getSpeciality(){
+            return $this->speciality;
+        }
+
+        public function getRating(){
+            return $this->rating;
+        }
+
+        public function getRole(){
+            return $this->role;
         }
 
         public function isExisting() {
@@ -41,5 +74,7 @@
             $this->email = $email;
             $this->password = $hash;
         }
+
+    
     }
 ?>  

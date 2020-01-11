@@ -2,48 +2,43 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Earn your vote</title>
+    <title>Create poll</title>
+    <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="http://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
         crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="css/create_poll.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/nav_admin.css">
+    <link rel="stylesheet" href="css/create_poll.css">
+    <link rel="stylesheet" href="css/page_header.css">
+    <script src="js/import_html_script.js"></script>
     <link rel="icon" type="image/jpg" href="img/favicon.jpg"/>
 </head>
 
 <body>
 
-<nav class="sidebar">
-  <header id="sidebar_header">Admin Panel</header>
-  <a href="#home"><i class="fas fa-id-card"></i> Active Polls</a>
-  <a href="#services"><i class="fas fa-poll"></i> Create a Poll</a>
-  <a href="#clients"><i class="fas fa-tasks"></i> Manage Polls</a>
-  <a href="#contact"><i class="fas fa-award"></i> Poll Results</a>
-  <a href="#services"><i class="fas fa-poll"></i> Create a Task</a>
-  <a href="#clients"><i class="fas fa-tasks"></i> Manage Tasks</a>
-  <a href="#clients"><i class="fas fa-tasks"></i> Assess a Student</a>
-</nav>
+<span data-include="nav_admin.html"></span>
+<span data-include="create_poll_header.html"></span>
 
-<header id="header_nav">
-  <h2> Set New Poll</h2>
-  <a id="logout" href="#logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
-</header>
-
-<main class="main">
+<main>
   <article>
-    <form method="POST" action="create_poll.php">
+    <form method="POST" action="src/create_poll.php">
       <div>
       <label for="poll_question">Poll Question</label>
-      <input type="text" name="poll_question">
+      <input type="text" name="poll_question" required>
       </div>
-      <div><label for="poll_description">Poll Description</label>
-      <textarea type="text" name="poll_description"></textarea>
-    </div>
     <div><label for="possible_answers">Possible answers (one per line)</label>
-      <textarea name="possible_answers" rows="7" type="text"></textarea>
+      <textarea name="possible_answers" rows="7" type="text" required></textarea>
+    </div>
+    <div><label for="expires_date">Poll is open to:</label>
+      <input type="date" name="expires_date" required>
     </div>
     <button id="btn_save_poll" type="submit">Save the Poll</button>
     </form>
   </article>
 </main>
+
+<script>
+    includeHTML();
+</script>
 </body>
 </html> 

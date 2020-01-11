@@ -28,6 +28,9 @@
         if(mb_strlen($spec) > 45){
             $errors[] = 'The speciality must be less than 45 symbols';
         }
+        if(empty($spec)){
+            $spec = "NULL";
+        }
         $user = new User($username);
         if($user->isExisting()) {
             $errors[] = 'Username is already taken';
@@ -47,8 +50,8 @@
         session_unset();
         session_destroy();
     } else {
-        echo 'Registration is successful <br/>';
-        echo 'Username: ' . $username;
+        $login = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/../login.html';
+        header('Location: ' . $login);
     }
 
     function modifyInput($text) {
