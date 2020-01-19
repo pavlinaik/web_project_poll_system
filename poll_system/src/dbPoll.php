@@ -3,6 +3,7 @@
         private $connection;
         private $insertPollStatement;
         private $selectPollByIdStatement;
+        private $selectActivePolls;
 
         public function __construct() {
             $config = parse_ini_file("../config/config.ini", true);
@@ -28,6 +29,8 @@
             $this->insertPollStatement = $this->connection->prepare($sql);
             $sql = "SELECT * FROM poll WHERE id=:id";
             $this->selectPollByIdStatement = $this->connection->prepare($sql);
+            $sql = "SELECT * FROM poll WHERE status=1";
+            $this->selectActivePolls = $this->connection->prepare($sql);
         }
 
         public function insertPoll($data) {
@@ -52,6 +55,14 @@
             }
         }
 
+        public function getActivePolls(){
+            try {
+                $this->selectActivePolls->execute();
+                return $this->selectActivePolls;
+            } catch(PDOException $e) {
+                echo "Selecting active poll failed: " . $e->getMessage();
+            }
+        }
         public function __destruct() {
             $this->connection = null;
         }

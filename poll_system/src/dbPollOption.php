@@ -3,6 +3,7 @@
         private $connection;
         private $insertPollOptionStatement;
         private $selectPollOptionByIdStatement;
+        private $selectPollOptionsByPollId;
 
         public function __construct() {
             $config = parse_ini_file("../config/config.ini", true);
@@ -28,6 +29,8 @@
             $this->insertPollOptionStatement = $this->connection->prepare($sql);
             $sql = "SELECT * FROM polloption WHERE id=:id";
             $this->selectPollOptionByIdStatement = $this->connection->prepare($sql);
+            $sql = "SELECT * FROM polloption WHERE pollId=:pollId";
+            $this->selectPollOptionsByPollId = $this->connection->prepare($sql);
         }
 
         public function insertPollOption($data) {
@@ -47,6 +50,15 @@
                 return $this->selectPollOptionByIdStatement;
             } catch(PDOException $e) {
                 echo "Selecting poll option failed: " . $e->getMessage();
+            }
+        }
+
+        public function getPollOptionsByPollId($data){
+            try {
+                $this->selectPollOptionsByPollId->execute($data);
+                return $this->selectPollOptionsByPollId;
+            } catch(PDOException $e) {
+                echo "Selecting poll option by pollId failed: " . $e->getMessage();
             }
         }
 
