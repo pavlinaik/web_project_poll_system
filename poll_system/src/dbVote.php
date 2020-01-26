@@ -26,7 +26,7 @@
         }
 
         private function prepareStatements() {
-            $sql = "INSERT INTO vote(pollId, optionId, userId) VALUES(:pollId, :optionId, :userId)";
+            $sql = "INSERT INTO vote(pollId, optionId, userId, rating) VALUES(:pollId, :optionId, :userId, :rating)";
             $this->insertVoteStatement = $this->connection->prepare($sql);
             $sql = "SELECT * FROM vote WHERE pollId=:pollId";
             $this->selectVotesForPoll = $this->connection->prepare($sql);

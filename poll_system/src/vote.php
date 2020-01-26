@@ -42,8 +42,8 @@
                 return false;
             }
         }
-        public function createVote($pollId, $optionId, $userId) {
-            $this->db->insertVote(["pollId" => $pollId, "optionId" => $optionId, "userId" => $userId]);
+        public function createVote($pollId, $optionId, $userId, $rating) {
+            $this->db->insertVote(["pollId" => $pollId, "optionId" => $optionId, "userId" => $userId, "rating" => $rating]);
         }
     }
 ?>  

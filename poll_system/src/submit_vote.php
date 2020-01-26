@@ -1,5 +1,6 @@
 <?php
     require_once "./vote.php";
+    require_once "./user.php";
     session_start();
     $errors = [];
 
@@ -19,7 +20,9 @@
             // echo json_encode(["code" => "fail", "cause" => "already vote"]);
             // exit();
         }
-        $vote->createVote($pollId, $optionId, $userId); 
+        $user = new User($_SESSION['username']);
+        $user->isExisting();
+        $vote->createVote($pollId, $optionId, $userId, $user->getRating()); 
     } else {
         http_response_code(400);
         echo 'Invalid request';
