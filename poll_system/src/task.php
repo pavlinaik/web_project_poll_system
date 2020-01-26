@@ -46,7 +46,7 @@
             $result = $this->db->selectTaskById(["taskId" => $id]);
             $task = $result->fetch(PDO::FETCH_ASSOC);
             if($task) {
-                $this->id = $task["id"];
+                $this->id = $task["taskId"];
                 $this->title = $task["title"];
                 $this->content = $task["content"];
                 $this->deadline = $task["deadline"];
@@ -56,6 +56,18 @@
                 return true;
             }
             return false;
+        }
+
+        public function getActiveTasks(){
+            $result = $this->db->getActiveTasks();
+            $rows = $result->fetchAll(PDO::FETCH_ASSOC);
+            return $rows;
+        }
+
+        public function getAllTasks(){
+            $result = $this->db->getAllTasks();
+            $tasks = $result->fetchAll(PDO::FETCH_ASSOC);
+            return $tasks;
         }
 
         public function createTask($title, $content, $deadline, $maxpoints, $weight) {

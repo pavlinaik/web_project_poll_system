@@ -49,7 +49,7 @@
         }
 
         public function isExisting() {
-            $result = $this->db->selectUser([":username" => $this->username]);
+            $result = $this->db->selectUser(["username" => $this->username]);
             $user = $result->fetch(PDO::FETCH_ASSOC);
             if($user) {
                 $this->id = $user["id"];
@@ -75,6 +75,21 @@
             $this->password = $hash;
         }
 
-    
+        public function getAllStudentsFNs()
+        {
+            $result = $this->db->getAllStudentsFNs();
+            $students = $result->fetchAll(PDO::FETCH_ASSOC);
+            return $students;
+        }
+        
+        public function getStudentRating($studentId){
+            $result = $this->db->selectUserById(["id" => $studentId]);
+            $user = $result->fetch(PDO::FETCH_ASSOC);
+            return $user["rating"];
+        }
+
+        public function updateStudentRating($studentId, $rating) {
+            $this->db->updateStudentRating(["id" => $studentId, "rating" => $rating]);
+        }
     }
 ?>  

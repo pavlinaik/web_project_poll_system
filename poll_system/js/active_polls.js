@@ -15,11 +15,11 @@ window.onload = function() {
                         "<td>" + polls[x].question + "</td>" +
                         "<td>" + polls[x].expiresAt + "</td>" +
                         "<td>active</td>" +
-                        "<td><form action='src/vote_form.php'><button name='poll_number' type='submit' value=" + polls[x].id +">Vote</button></form></td>" +
+                        // "<td><form action='src/vote_form.php'><button name='poll_number' type='submit' value=" + polls[x].id +">Vote</button></form></td>" +
+                        "<td><a href='vote_form.html?pollId=" + polls[x].id +"'><button name='poll_number' type='button'>Vote</button></a></td>" +
                     "</tr>";
             }
             txt += "</table>"; 
-            this.console.log(txt);
             document.getElementById("active_table").innerHTML = txt;
         }
     }

@@ -28,8 +28,8 @@
             echo $value . '<br/>';
         }
     } else {
-        // $newUrl = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/../manage_polls.html';
-        // header('Location: ' . $newUrl);
+        $newUrl = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/../manage_polls.html';
+        header('Location: ' . $newUrl);
     }
 
     function modifyInput($text) {

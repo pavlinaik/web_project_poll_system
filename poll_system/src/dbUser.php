@@ -4,6 +4,8 @@
         private $insertUserStatement;
         private $selectUserByUsernameStatement;
         private $selectUserByIdStatement;
+        private $selectAllStudentsFNs;
+        private $updateStudentRating;
 
         public function __construct() {
             $config = parse_ini_file("../config/config.ini", true);
@@ -31,6 +33,10 @@
             $this->selectUserByUsernameStatement = $this->connection->prepare($sql);
             $sql = "SELECT * FROM user WHERE id=:id";
             $this->selectUserByIdStatement = $this->connection->prepare($sql);
+            $sql = "SELECT id,fn FROM user WHERE role=0";
+            $this->selectAllStudentsFNs = $this->connection->prepare($sql);
+            $sql = "UPDATE user SET rating=:rating WHERE id=:id";
+            $this->updateStudentRating = $this->connection->prepare($sql);
         }
 
         public function insertUser($data) {
@@ -50,6 +56,33 @@
                 return $this->selectUserByUsernameStatement;
             } catch(PDOException $e) {
                 echo "Selecting user failed: " . $e->getMessage();
+            }
+        }
+
+        public function selectUserById($data) {
+            try {
+                $this->selectUserByIdStatement->execute($data);
+                return $this->selectUserByIdStatement;
+            } catch(PDOException $e) {
+                echo "Selecting user by id failed: " . $e->getMessage();
+            }
+        }
+        
+        public function getAllStudentsFNs() {
+            try {
+                $this->selectAllStudentsFNs->execute();
+                return $this->selectAllStudentsFNs;
+            } catch(PDOException $e) {
+                echo "Selecting student's fns failed: " . $e->getMessage();
+            }
+        }
+
+        public function updateStudentRating($data) {
+            try {
+                $this->updateStudentRating->execute($data);
+                return $this->updateStudentRating;
+            } catch(PDOException $e) {
+                echo "Updating student rating failed: " . $e->getMessage();
             }
         }
 

@@ -1,0 +1,27 @@
+body {font-family: "Lato", sans-serif;
+    margin: 0;}
+  
+main {
+    margin-left: 300px; /* Same as the width of the sidenav */
+    padding: 0px 10px;
+}
+
+#message {
+    margin: auto;
+    margin-top: 100px;
+    width: 50%;
+    padding: 20px;
+    background-color: #ffffff;
+    border: solid 1px;
+    border-radius: 50px;
+    font: 28px bold;
+    text-align: center;
+  }
+
+#message a {
+    /* remove default underline */
+    text-decoration: none;
+    text-align: center;
+    color: #1FCC44;
+    font-weight: bold;
+}

@@ -3,6 +3,8 @@
         private $connection;
         private $insertTaskStatement;
         private $selectTaskByIdStatement;
+        private $selectActiveTasks;
+        private $selectAllTasks;
 
         public function __construct() {
             $config = parse_ini_file("../config/config.ini", true);
@@ -28,6 +30,10 @@
             $this->insertTaskStatement = $this->connection->prepare($sql);
             $sql = "SELECT * FROM task WHERE taskId=:taskId";
             $this->selectTaskByIdStatement = $this->connection->prepare($sql);
+            $sql = "SELECT * FROM task WHERE status=1";
+            $this->selectActiveTasks = $this->connection->prepare($sql);
+            $sql = "SELECT * FROM task";
+            $this->selectAllTasks = $this->connection->prepare($sql);
         }
 
         public function insertTask($data) {
@@ -47,6 +53,24 @@
                 return $this->selectTaskByIdStatement;
             } catch(PDOException $e) {
                 echo "Selecting task failed: " . $e->getMessage();
+            }
+        }
+
+        public function getActiveTasks() {
+            try {
+                $this->selectActiveTasks->execute();
+                return $this->selectActiveTasks;
+            } catch(PDOException $e) {
+                echo "Selecting active tasks failed: " . $e->getMessage();
+            }
+        }
+
+        public function getAllTasks() {
+            try {
+                $this->selectAllTasks->execute();
+                return $this->selectAllTasks;
+            } catch(PDOException $e) {
+                echo "Selecting all tasks failed: " . $e->getMessage();
             }
         }
 
