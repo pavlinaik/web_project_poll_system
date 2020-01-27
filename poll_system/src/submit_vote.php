@@ -34,7 +34,7 @@
             echo $value . '<br/>';
         }
     } else {
-        $newUrl = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/../active_polls_admin.html';
+        $newUrl = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/../active_polls.html';
         header('Location: ' . $newUrl);
     }
 

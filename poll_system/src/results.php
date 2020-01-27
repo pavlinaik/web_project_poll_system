@@ -1,7 +1,7 @@
 <?php
     require_once "./vote.php";
     require_once "./poll.php";
-
+    session_start();
     if($_GET) {
         $pollId = isset($_GET['pollID']) ? modifyInput($_GET['pollID']) : '';
         $poll = new Poll();
@@ -61,7 +61,7 @@
   </div>
 </div>
 <?php $i++; $cnt++;} ?>
-<a href="../active_polls_admin.html">Back to poll results ➡ </a>
+<a href=<?php echo $_SESSION['role']?"../manage_polls.html":"../poll_results.html"; ?>>Back to poll results ➡ </a>
 </div>
 
 <style>

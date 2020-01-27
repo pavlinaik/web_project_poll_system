@@ -30,9 +30,10 @@
             $this->insertTaskResultStatement = $this->connection->prepare($sql);
             $sql = "SELECT * FROM taskresult WHERE taskId=:taskId";
             $this->selectAllResultsForTasks = $this->connection->prepare($sql);
-            $sql = "SELECT result, maxpoints, weight FROM taskresult 
-                    join task on taskresult.taskId = task.taskId
-                    where studentId = :studentId";
+            // $sql = "SELECT result, maxpoints, weight FROM taskresult 
+            //         join task on taskresult.taskId = task.taskId
+            //         where studentId = :studentId";
+            $sql = "SELECT taskId, result FROM taskresult WHERE studentId = :studentId";
             $this->selectAllResultsForStudent = $this->connection->prepare($sql);
             $sql = "SELECT * FROM taskresult WHERE taskId=:taskId AND studentId=:studentId";
             $this->selectResult =  $this->connection->prepare($sql);

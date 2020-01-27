@@ -2,30 +2,33 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Active Tasks</title>
+    <title>Poll Results</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="http://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
         crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/nav_admin.css">
-    <link rel="stylesheet" href="css/active_tasks.css">
+    <link rel="stylesheet" href="css/all_polls.css">
     <link rel="stylesheet" href="css/page_header.css">
     <script src="js/import_html_script.js"></script>
-    <script src="js/active_tasks.js"></script>
+    <script src="js/poll_results.js"></script>
     <link rel="icon" type="image/jpg" href="img/favicon.jpg"/>
 </head>
 
 <body>
 
-<span data-include="nav_admin.html"></span>
-<span data-include="active_tasks_header.html"></span>
+<span data-include="nav_student.html"></span>
+<header id="header_nav">
+    <h1>Results</h1>
+    <a id="logout" href="src/logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
+</header>
 
 <main>
-    <div id="active_tasks"></div>
+    <div id="all_poll_table"></div>
 </main>
 
 <script>
     includeHTML();
 </script>
 </body>
-</html> 
+</html>

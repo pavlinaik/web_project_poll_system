@@ -1,4 +1,4 @@
-body {font-family: "Lato", sans-serif;
+body {
     margin: 0;}
   
 main {
@@ -7,26 +7,27 @@ main {
     position: relative;
 }
 
-#active_tasks {
+#all_poll_table {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-  } 
+    padding-top: 150px; 
+  }
   
-#active_tasks td, #active_tasks th {
+#all_poll_table td, #all_poll_table th {
     text-align: center;
     border: 1px solid #ddd;
     padding: 8px;
   }
   
-#active_tasks tr:nth-child(odd){background-color: #f2f2f2;}
+#all_poll_table tr:nth-child(even){background-color: #f2f2f2;}
   
-#active_tasks tr:hover {background-color: #ddd;}
+#all_poll_table tr:hover {background-color: #ddd;}
   
-#active_tasks th {
+#all_poll_table th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: center;

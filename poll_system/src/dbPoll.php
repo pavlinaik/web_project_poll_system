@@ -4,6 +4,8 @@
         private $insertPollStatement;
         private $selectPollByIdStatement;
         private $selectActivePolls;
+        private $selectAllPolls;
+        private $deletePollById;
 
         public function __construct() {
             $config = parse_ini_file("../config/config.ini", true);
@@ -31,6 +33,10 @@
             $this->selectPollByIdStatement = $this->connection->prepare($sql);
             $sql = "SELECT * FROM poll WHERE status=1";
             $this->selectActivePolls = $this->connection->prepare($sql);
+            $sql = "SELECT * FROM poll";
+            $this->selectAllPolls = $this->connection->prepare($sql);
+            $sql = "DELETE FROM poll WHERE id=:id";
+            $this->deletePollById = $this->connection->prepare($sql);
         }
 
         public function insertPoll($data) {
@@ -60,9 +66,27 @@
                 $this->selectActivePolls->execute();
                 return $this->selectActivePolls;
             } catch(PDOException $e) {
-                echo "Selecting active poll failed: " . $e->getMessage();
+                echo "Selecting active polls failed: " . $e->getMessage();
             }
         }
+
+        public function getAllPolls(){
+            try {
+                $this->selectAllPolls->execute();
+                return $this->selectAllPolls;
+            } catch(PDOException $e) {
+                echo "Selecting all polls failed: " . $e->getMessage();
+            }
+        }
+
+        public function deletePollById($data) {
+            try {
+                $this->deletePollById->execute($data);
+            } catch(PDOException $e) {
+                echo "Deleting poll failed: " . $e->getMessage();
+            }
+        }
+
         public function __destruct() {
             $this->connection = null;
         }

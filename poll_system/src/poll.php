@@ -70,10 +70,19 @@
         }
 
         public function getActivePolls(){
-            $arrayPolls = [];
             $result = $this->db->getActivePolls();
             $rows = $result->fetchAll(PDO::FETCH_ASSOC);
             return $rows;
+        }
+
+        public function getAllPolls(){
+            $result = $this->db->getAllPolls();
+            $rows = $result->fetchAll(PDO::FETCH_ASSOC);
+            return $rows;
+        }
+
+        public function deletePollById($id) {
+            return $this->db->deletePollById(["id" => $id]);
         }
     }
 ?>  

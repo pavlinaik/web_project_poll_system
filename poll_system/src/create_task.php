@@ -27,7 +27,7 @@
             echo $value . '<br/>';
         }
     } else {
-        $newUrl = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/../manage_tasks.html';
+        $newUrl = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/../view_tasks.html';
         header('Location: ' . $newUrl);
     }
 

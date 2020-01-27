@@ -1,6 +1,6 @@
 window.onload = function() {
     const xhr = new XMLHttpRequest();
-    const url='src/active_tasks.php';
+    const url='src/view_tasks.php';
     xhr.open("GET", url, true);
     xhr.send();
 
@@ -15,15 +15,18 @@ window.onload = function() {
                         "<td>" + tasks[x].content + "</td>" +
                         "<td>" + tasks[x].deadline + "</td>" +
                         "<td>" + tasks[x].maxpoints + "</td>" +
-                        "<td>" + tasks[x].weight + "</td>" +
-                        "<td>active</td>" +
-                        // "<td><form action='src/vote_form.php'><button name='poll_number' type='submit' value=" + polls[x].id +">Vote</button></form></td>" +
-                        // "<td><a href='vote_form.html?pollId=" + tasks[x].id +"'><button name='poll_number' type='button'>Vote</button></a></td>" +
-                    "</tr>";
+                        "<td>" + tasks[x].weight + "</td>";
+            if(tasks[x].status == 1){
+                txt += "<td>active</td>";
+            }
+            else {
+                txt += "<td>closed</td>";
+            }             
+            txt +="</tr>";
             }
             txt += "</tbody>";
             txt += "</table>"; 
-            document.getElementById("active_tasks").innerHTML = txt;
+            document.getElementById("tasks").innerHTML = txt;
         }
     }
   };

@@ -3,6 +3,6 @@
     session_start();
     header("Content-type: application/json");
     $task = new Task();    
-    $activeTasks = $task->getActiveTasks();
+    $activeTasks = $task->getAllTasks();
     echo json_encode($activeTasks);
 ?>

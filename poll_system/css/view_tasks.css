@@ -7,27 +7,26 @@ main {
     position: relative;
 }
 
-#active_table {
+#tasks {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding-top: 150px; 
-  }
+  } 
   
-#active_table td, #active_table th {
+#tasks td, #tasks th {
     text-align: center;
     border: 1px solid #ddd;
     padding: 8px;
   }
   
-#active_table tr:nth-child(even){background-color: #f2f2f2;}
+#tasks tr:nth-child(odd){background-color: #f2f2f2;}
   
-#active_table tr:hover {background-color: #ddd;}
+#tasks tr:hover {background-color: #ddd;}
   
-#active_table th {
+#tasks th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: center;

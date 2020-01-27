@@ -37,7 +37,7 @@
     } else {
         if($_SESSION['role'] == 0){
             //user is a student
-            $student_home = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/../create_poll.html';
+            $student_home = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/../active_polls.html';
             header('Location: ' . $student_home);
         }
         else{
