@@ -12,11 +12,14 @@
         if(!$taskId || !$studentId || !$result) {
             $errors[] = 'All fields are required';
         }
-        $taskResult = new TaskResult();
-        $taskResult->createTaskResult($studentId, $taskId, $result);
         $task = new Task();
         $task->getTaskById($taskId);
         $maxpoints = $task->getMaxpoints();
+        $taskResult = new TaskResult();
+        if($result > $maxpoints){
+            $errors[] = 'Maxpoints are exceed';
+        }
+        $taskResult->createTaskResult($studentId, $taskId, $result);
         $weight = $task->getWeight();
         $student = new User($_SESSION['user_id']);
         $rating = $student->getStudentRating($studentId);

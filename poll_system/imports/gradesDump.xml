@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grades>
+  <grade>
+    <task>Homework 3</task>
+    <fn>80000</fn>
+    <points>33</points>
+  </grade>
+  <grade>
+    <task>Homework 1</task>
+    <fn>80000</fn>
+    <points>29</points>
+  </grade>
+    <grade>
+    <task>Homework 2</task>
+    <fn>80001</fn>
+    <points>36</points>
+  </grade>
+    <grade>
+    <task>Homework 3</task>
+    <fn>80002</fn>
+    <points>30</points>
+  </grade>
+    <grade>
+    <task>Homework 1</task>
+    <fn>80002</fn>
+    <points>28</points>
+  </grade>
+    <grade>
+    <task>Homework 2</task>
+    <fn>80004</fn>
+    <points>27</points>
+  </grade>
+    <grade>
+    <task>Homework 3</task>
+    <fn>80005</fn>
+    <points>40</points>
+  </grade>
+    <grade>
+    <task>Homework 1</task>
+    <fn>80003</fn>
+    <points>27</points>
+  </grade>
+    <grade>
+    <task>Homework 2</task>
+    <fn>80003</fn>
+    <points>28</points>
+  </grade>
+    <grade>
+    <task>Homework 3</task>
+    <fn>80003</fn>
+    <points>38</points>
+  </grade>
+</grades>

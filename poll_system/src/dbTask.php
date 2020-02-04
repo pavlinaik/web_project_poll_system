@@ -3,6 +3,7 @@
         private $connection;
         private $insertTaskStatement;
         private $selectTaskByIdStatement;
+        private $selectTaskByTitle;
         private $selectActiveTasks;
         private $selectAllTasks;
 
@@ -30,6 +31,8 @@
             $this->insertTaskStatement = $this->connection->prepare($sql);
             $sql = "SELECT * FROM task WHERE taskId=:taskId";
             $this->selectTaskByIdStatement = $this->connection->prepare($sql);
+            $sql = "SELECT * FROM task WHERE title=:title";
+            $this->selectTaskByTitle = $this->connection->prepare($sql);
             $sql = "SELECT * FROM task WHERE status=1";
             $this->selectActiveTasks = $this->connection->prepare($sql);
             $sql = "SELECT * FROM task";
@@ -51,6 +54,15 @@
             try {
                 $this->selectTaskByIdStatement->execute($data);
                 return $this->selectTaskByIdStatement;
+            } catch(PDOException $e) {
+                echo "Selecting task failed: " . $e->getMessage();
+            }
+        }
+
+        public function selectTaskByTitle($data) {
+            try {
+                $this->selectTaskByTitle->execute($data);
+                return $this->selectTaskByTitle;
             } catch(PDOException $e) {
                 echo "Selecting task failed: " . $e->getMessage();
             }

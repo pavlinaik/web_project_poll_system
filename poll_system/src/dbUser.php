@@ -2,7 +2,9 @@
     class UserModel {
         private $connection;
         private $insertUserStatement;
+        private $insertUserImport;
         private $selectUserByUsernameStatement;
+        private $selectUserByFn;
         private $selectUserByIdStatement;
         private $selectAllStudentsFNs;
         private $updateStudentRating;
@@ -29,10 +31,14 @@
         private function prepareStatements() {
             $sql = "INSERT INTO user(username, email, password, fn, speciality) VALUES(:username, :email, :password, :fn, :speciality)";
             $this->insertUserStatement = $this->connection->prepare($sql);
+            $sql = "INSERT INTO user(username, email, password, fn, speciality, rating, role) VALUES(:username, :email, :password, :fn, :speciality, :rating, :role)";
+            $this->insertUserImport = $this->connection->prepare($sql);
             $sql = "SELECT * FROM user WHERE username=:username";
             $this->selectUserByUsernameStatement = $this->connection->prepare($sql);
             $sql = "SELECT * FROM user WHERE id=:id";
             $this->selectUserByIdStatement = $this->connection->prepare($sql);
+            $sql = "SELECT * FROM user WHERE fn=:fn";
+            $this->selectUserByFn = $this->connection->prepare($sql);
             $sql = "SELECT id,fn FROM user WHERE role=0";
             $this->selectAllStudentsFNs = $this->connection->prepare($sql);
             $sql = "UPDATE user SET rating=:rating WHERE id=:id";
@@ -47,6 +53,14 @@
             } catch(PDOException $e) {
                 $this->connection->rollBack();
                 echo "Inserting user failed: " . $e->getMessage();
+            }
+        }
+
+        public function importUser($data) {
+            try {
+                $this->insertUserImport->execute($data);
+            } catch(PDOException $e) {
+                echo "Importing user failed: " . $e->getMessage();
             }
         }
 
@@ -65,6 +79,15 @@
                 return $this->selectUserByIdStatement;
             } catch(PDOException $e) {
                 echo "Selecting user by id failed: " . $e->getMessage();
+            }
+        }
+
+        public function selectUserByFn($data) {
+            try {
+                $this->selectUserByFn->execute($data);
+                return $this->selectUserByFn;
+            } catch(PDOException $e) {
+                echo "Selecting user by fn failed: " . $e->getMessage();
             }
         }
         

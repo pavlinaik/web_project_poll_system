@@ -58,6 +58,15 @@
             return false;
         }
 
+        public function getTaskByTitle($title) {
+            $result = $this->db->selectTaskByTitle(["title" => $title]);
+            $task = $result->fetch(PDO::FETCH_ASSOC);
+            if($task) {
+                return $task;
+            }
+            return false;
+        }
+
         public function getActiveTasks(){
             $result = $this->db->getActiveTasks();
             $rows = $result->fetchAll(PDO::FETCH_ASSOC);

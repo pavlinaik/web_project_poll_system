@@ -75,6 +75,16 @@
             $this->password = $hash;
         }
 
+        public function importUser($email, $password, $fn, $speciality, $rating, $role) {
+            $this->db->importUser(["username" => $this->username, "email" => $email, "password" => $password, "fn" => $fn, "speciality" => $speciality, "rating" => $rating, "role" => $role]);
+        }
+
+        public function getStudentByFn($fn){
+            $result = $this->db->selectUserByFn(["fn" => $fn]);
+            $user = $result->fetch(PDO::FETCH_ASSOC);
+            return $user;
+        }
+
         public function getAllStudentsFNs()
         {
             $result = $this->db->getAllStudentsFNs();
