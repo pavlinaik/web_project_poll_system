@@ -5,6 +5,7 @@ if($_SESSION['user_id']){
   session_destroy();
   session_write_close();
   setcookie(session_name(),'',0,'/');
+  setcookie("username",'',0,'/');
   $home_url = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/../login.html';
   header('Location: ' . $home_url);
 }

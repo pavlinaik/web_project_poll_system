@@ -1,7 +1,12 @@
 <?php
     require_once "./task.php";
     $errors = [];
-
+    session_start();
+    if (!isset($_SESSION["username"])){
+        $loginPage = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/../login.html';
+        header('Location: ' . $loginPage);
+        return;
+    }
     if($_POST) {
         $title = isset($_POST['task_title']) ? modifyInput($_POST['task_title']) : '';
         $content = isset($_POST['task_req']) ? modifyInput($_POST['task_req']) : '';
@@ -29,6 +34,7 @@
     } else {
         $newUrl = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/../view_tasks.html';
         header('Location: ' . $newUrl);
+        return;
     }
 
     function modifyInput($text) {

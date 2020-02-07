@@ -19,6 +19,7 @@
                     $_SESSION['username']  = $username;
                     $_SESSION['user_id']  = $user->getId();
                     $_SESSION['role'] = $user->getRole();
+                    setcookie("username",$username,time()+3600,'/');
                 }
             }
         }
@@ -39,11 +40,13 @@
             //user is a student
             $student_home = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/../active_polls.html';
             header('Location: ' . $student_home);
+            return;
         }
         else{
             //user is an admin
             $admin_home = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/../create_poll.html';
             header('Location: ' . $admin_home);
+            return;
         }
     }
     

@@ -52,6 +52,7 @@
     } else {
         $login = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/../login.html';
         header('Location: ' . $login);
+        return;
     }
 
     function modifyInput($text) {

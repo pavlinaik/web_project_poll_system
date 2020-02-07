@@ -2,6 +2,11 @@
     require_once "./vote.php";
     require_once "./poll.php";
     session_start();
+    if (!isset($_SESSION["username"])){
+        $loginPage = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/../login.html';
+        header('Location: ' . $loginPage);
+        return;
+    }
     if($_GET) {
         $pollId = isset($_GET['pollID']) ? modifyInput($_GET['pollID']) : '';
         $poll = new Poll();

@@ -1,8 +1,13 @@
 <?php
     require_once "./poll.php";
     require_once "./pollOption.php";
+    session_start();
+    if (!isset($_SESSION["username"])){
+        $loginPage = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/../login.html';
+        header('Location: ' . $loginPage);
+        return;
+    }
     $errors = [];
-
     if($_POST) {
         $question = isset($_POST['poll_question']) ? modifyInput($_POST['poll_question']) : '';
         $options = isset($_POST['possible_answers']) ? modifyInput($_POST['possible_answers']) : '';
